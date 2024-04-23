@@ -1,0 +1,328 @@
+/* Подключение шрифтов */
+@font-face {
+  font-family: 'BebasNeueBold';
+  src: url('/fonts/BebasNeueBold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'OpenSans';
+  src: url('/fonts/OpenSans-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+
+/**
+  Нормализация блочной модели
+ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/**
+   Убираем внутренние отступы слева тегам списков,
+   у которых есть атрибут class
+  */
+:where(ul, ol):where([class]) {
+  padding-left: 0;
+}
+
+/**
+   Убираем внешние отступы body и двум другим тегам,
+   у которых есть атрибут class
+  */
+body,
+:where(blockquote, figure):where([class]) {
+  margin: 0;
+}
+
+/**
+   Убираем внешние отступы вертикали нужным тегам,
+   у которых есть атрибут class
+  */
+:where(h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol,
+  dl):where([class]) {
+  margin-block: 0;
+}
+
+:where(dd[class]) {
+  margin-left: 0;
+}
+
+:where(fieldset[class]) {
+  margin-left: 0;
+  padding: 0;
+  border: none;
+}
+
+/**
+   Убираем стандартный маркер маркированному списку,
+   у которого есть атрибут class
+  */
+:where(ul[class]) {
+  list-style: none;
+}
+
+/**
+   Обнуляем вертикальные внешние отступы параграфа,
+   объявляем локальную переменную для внешнего отступа вниз,
+   чтобы избежать взаимодействие с более сложным селектором
+  */
+p {
+  --paragraphMarginBottom: 24px;
+
+  margin-block: 0;
+}
+
+/**
+   Внешний отступ вниз для параграфа без атрибута class,
+   который расположен не последним среди своих соседних элементов
+  */
+p:where(:not([class]):not(:last-child)) {
+  margin-bottom: var(--paragraphMarginBottom);
+}
+
+
+/**
+   Упрощаем работу с изображениями
+  */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/**
+   Наследуем свойства шрифт для полей ввода
+  */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+html {
+  /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+  height: 100%;
+  /**
+     Плавный скролл
+    */
+  scroll-behavior: smooth;
+}
+
+body {
+  /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+  min-height: 100%;
+  /**
+     Унифицированный интерлиньяж
+    */
+  line-height: 1;
+}
+
+/**
+   Приводим к единому цвету svg-элементы
+  */
+svg *[fill] {
+  fill: currentColor
+}
+
+svg *[stroke] {
+  stroke: currentColor
+}
+
+/**
+   Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+  */
+svg * {
+  transition-property: fill, stroke;
+}
+
+/**
+   Удаляем все анимации и переходы для людей,
+   которые предпочитают их не использовать
+  */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Переменные для цвета */
+:root {
+  --blue-color: #00A4E5;
+  --white-color: #FFFFFF;
+  --accent-color: #16ACE8;
+  --text-color: #48555B;
+  --font-family-title: 'BebasNeueBold', Arial, San-Serif;
+  --font-family-base: 'OpenSans', Arial, San-Serif;
+  --border-color: #E6E6E6;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+ul,
+ol {
+  color: var(--text-color);
+  font-family: var(--font-family-base);
+}
+
+.container {
+  width: 1440px;
+  margin-inline: auto;
+}
+
+.container-inner {
+  width: 940px;
+}
+
+body {
+  background-color: #F2F2F2;
+}
+
+.header {  
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+   */
+  
+}
+.header__top {
+  display: flex;
+  flex-direction: column;
+  /* width: 100%; */
+  align-items: center;
+  min-height: 769px; 
+  margin-inline: auto;
+  background: url(/img/bg-header.png) center/cover no-repeat #232222;
+
+}
+
+.header-logo {
+  padding-top: 41px;
+  margin-bottom: 309px;
+}
+
+.header-title {
+  padding-left: 12px;
+  color: var(--white-color);
+  font-family: var(--font-family-title);
+  font-size: clamp(40px, 4.17vw, 60px);
+  letter-spacing: 5.709px;
+  line-height: normal;
+
+}
+
+
+.header-title-description {
+  margin-top: -2px;
+  color: var(--white-color);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.35px;
+}
+
+.header-title-description:not(:last-child) {
+  margin-bottom: 226px;
+  
+}
+
+.header-pointer-text {
+  padding-left: 2px;
+  padding-right: 120;
+  color: var(--white-color);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 3.9px
+}
+.header__bottom {
+  display: flex;
+  /* width: 100%; */
+  min-height: 65px;
+  background-color: var(--white-color);
+  padding-left: 258px;
+  border: 1px solid var(--border-color);
+}
+.header__bottom-logo {
+  width: 80px;
+  height: 18px;
+  padding-top: 22px;
+  margin-right: 451px;
+}
+.header__bottom-logo-image {
+  
+}
+.header__menu {
+  
+}
+.header__menu-list {
+  display: flex;
+  column-gap: 40px;
+  
+ 
+}
+.header__menu-item {
+  padding-top: 18px;
+
+}
+.header__menu-link {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.091px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.header__menu-link:hover {
+  color: var(--blue-color);
+  background-color: var(--text-color);
+  font-weight: 700;
+}
+
+.is-current {
+  color: var(--blue-color);
+  font-weight: 700;
+}
+
+
+
+@media (max-width: 767px) {
+  .header__bottom {
+    flex-direction: column;
+    align-items: center; 
+    padding: 0;   
+  }
+
+  .header__bottom-logo {
+    margin: 0 auto;
+  }
+
+}
