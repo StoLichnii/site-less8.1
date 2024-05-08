@@ -257,7 +257,7 @@ body {
   align-items: center;
   min-height: 769px;
   margin-inline: auto;
-  background: url(../img/bg-header.png) center/cover no-repeat #232222;
+  background: url(img/bg-header.png) center/cover no-repeat #232222;
 
 }
 
@@ -425,16 +425,16 @@ body {
 }
 
 .about-tagline:nth-child(1) {
-  background: url(../img/plan.png) center/cover no-repeat #b1b0b0;
+  background: url(/img/plan.png) center/cover no-repeat #b1b0b0;
 
 }
 
 .about-tagline:nth-child(2) {
-  background: url(../img/manage.png) center/cover no-repeat #b1b0b0;
+  background: url(/img/manage.png) center/cover no-repeat #b1b0b0;
 }
 
 .about-tagline:nth-child(3) {
-  background: url(../img/build.png) center/cover no-repeat #b1b0b0;
+  background: url(/img/build.png) center/cover no-repeat #b1b0b0;
 }
 
 
