@@ -1,7 +1,7 @@
 /* Подключение шрифтов */
 @font-face {
   font-family: 'BebasNeueBold';
-  src: url('../fonts/BebasNeueBold.woff2') format('woff2');
+  src:url(/fonts/BebasNeueBold.woff2) format('woff2');
   font-style: normal;
   font-weight: 400;
   font-display: swap;
